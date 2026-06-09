@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הצעת שיתוף פעולה | איילת וינטרוב × שיבא</title>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&display=swap');
+
+  .card-icon { color: var(--dark); margin-bottom: 14px; display: block; }
+  .card-icon svg { width: 28px; height: 28px; stroke-width: 1.6; }
+  .price-item-icon svg { width: 22px; height: 22px; stroke-width: 1.6; }
+
+  :root {
+    --yellow: #FFBE0B;
+    --pink:   #EF476F;
+    --blue:   #1982C4;
+    --purple: #6A4C93;
+    --green:  #8AC926;
+    --dark:   #1a1a2e;
+    --mid:    #16213e;
+    --text:   #2c2c2c;
+    --gray:   #666;
+    --bg:     #fafaf8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 60%, #0f3460 100%);
+    color: white;
+    padding: 70px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(255,190,11,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(239,71,111,0.08) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    display: block;
+    filter: drop-shadow(0 4px 16px rgba(255,190,11,0.4));
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,190,11,0.15);
+    border: 1px solid rgba(255,190,11,0.35);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--yellow);
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 50px);
+    font-weight: 900;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+  }
+
+  .hero h1 span { color: var(--yellow); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .stat-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--yellow);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+
+  /* COLOR STRIP */
+  .color-strip {
+    display: flex;
+    height: 5px;
+  }
+  .color-strip div { flex: 1; }
+
+  /* MAIN */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  .intro-section {
+    padding: 60px 0 40px;
+    text-align: center;
+  }
+
+  .intro-section p {
+    font-size: 18px;
+    color: var(--gray);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .intro-section p strong { color: var(--text); }
+
+  .section-header { text-align: center; margin-bottom: 40px; }
+
+  .section-header .tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-header h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--dark);
+  }
+
+  /* TABS */
+  .tabs-wrapper { padding: 20px 0 60px; }
+
+  .tabs-nav {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 10px 22px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    background: white;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    color: var(--gray);
+  }
+
+  .tab-btn:hover { border-color: var(--yellow); color: var(--dark); }
+
+  .tab-btn.active {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--dark);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid #ebebeb;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px; height: 100%;
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: top;
+  }
+
+  .card.green-card::before  { background: var(--green); }
+  .card.blue-card::before   { background: var(--blue); }
+  .card.purple-card::before { background: var(--purple); }
+
+  .card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+    transform: translateY(-4px);
+    border-color: transparent;
+  }
+
+  .card:hover::before { transform: scaleY(1); }
+
+  .card-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+
+  .card-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .badge-green  { background: #f1f8e9; color: #558b2f; }
+  .badge-blue   { background: #e3f2fd; color: #1565c0; }
+  .badge-purple { background: #ede7f6; color: #4a148c; }
+
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+
+  .card p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+
+  .card-detail {
+    display: none;
+    background: #fffbf0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text);
+    border-right: 3px solid var(--yellow);
+  }
+
+  .card.open .card-detail { display: block; }
+
+  /* PRICING */
+  .pricing-section {
+    background: linear-gradient(135deg, var(--dark), var(--mid));
+    color: white;
+    text-align: center;
+    padding: 60px 40px;
+    border-radius: 24px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(255,190,11,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .price-tag {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--yellow);
+    line-height: 1;
+    margin: 16px 0 8px;
+  }
+
+  .price-sub { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+  .price-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 30px; }
+
+  .price-includes {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .price-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px 22px;
+    min-width: 160px;
+  }
+
+  .price-item-icon { font-size: 22px; margin-bottom: 8px; }
+  .price-item-text { font-size: 13px; color: rgba(255,255,255,0.65); }
+
+  /* PILOT */
+  .pilot-banner {
+    background: linear-gradient(135deg, #fffdf0, #fff8d6);
+    border: 2px solid var(--yellow);
+    border-radius: 20px;
+    padding: 36px 40px;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .pilot-banner h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .pilot-banner p { font-size: 15px; color: var(--gray); max-width: 500px; margin: 0 auto 20px; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--dark);
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,190,11,0.4);
+  }
+
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 13px;
+  }
+
+  footer strong { color: white; }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0; right: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to left, var(--yellow), var(--pink));
+    z-index: 999;
+    transition: width 0.1s;
+  }
+
+  section { padding: 40px 0; }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 50px 20px 40px; }
+    .hero-stats { gap: 20px; }
+    .pricing-section { padding: 40px 20px; }
+    .pilot-banner { padding: 28px 20px; }
+    .price-tag { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollBar"></div>
+
+<!-- COLOR STRIP -->
+<div class="color-strip">
+  <div style="background:#FFBE0B"></div>
+  <div style="background:#EF476F"></div>
+  <div style="background:#1982C4"></div>
+  <div style="background:#6A4C93"></div>
+  <div style="background:#8AC926"></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <!-- Catchy Logo SVG -->
+    <svg class="hero-logo" viewBox="0 0 982 982" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="490.597" cy="490.597" r="490.597" fill="#FFBE0B"/>
+      <path d="M2.87646 516.517C2.87646 470.735 12.6882 424.298 32.3116 377.208C51.9351 329.464 79.735 285.317 115.711 244.767C151.688 204.217 198.457 171.188 256.019 145.681C314.235 119.52 374.087 106.439 435.573 106.439C497.714 106.439 546.119 117.885 580.787 140.776C616.109 163.667 633.77 195.388 633.77 235.938C633.77 276.487 620.361 308.208 593.542 331.099C567.378 353.336 537.288 364.455 503.274 364.455C469.26 364.455 438.517 357.26 411.044 342.872C384.225 327.829 362.64 306.573 346.287 279.104C310.965 296.108 280.548 329.464 255.038 379.17C229.527 428.877 216.772 478.91 216.772 529.27C216.772 578.977 224.948 618.546 241.301 647.977C257.654 676.754 280.875 691.143 310.965 691.143C341.054 691.143 367.545 675.773 390.439 645.034C413.988 614.294 425.762 577.342 425.762 534.176C491.827 534.176 538.924 539.408 567.051 549.872C595.832 560.337 610.222 582.901 610.222 617.564C610.222 671.849 580.787 722.863 521.917 770.608C463.046 818.352 389.131 842.224 300.172 842.224C211.212 842.224 139.259 814.755 84.3138 759.816C30.0222 704.878 2.87646 623.778 2.87646 516.517Z" fill="white"/>
+      <path d="M366.15 406.29L364.511 455.049C364.511 471.849 365.877 485.985 368.609 497.457C371.478 508.93 376.738 516.852 384.389 521.222C374.962 527.095 365.399 530.032 355.699 530.032C338.621 530.032 328.101 516.237 324.139 488.648H282.332C279.736 497.526 278.438 504.355 278.438 509.135C278.438 513.779 278.985 517.535 280.078 520.403C269.968 526.822 260.95 530.032 253.026 530.032C240.867 530.032 234.787 522.656 234.787 507.906C234.787 500.53 237.041 491.243 241.55 480.043C246.195 468.844 252.275 456.005 259.789 441.528C267.44 427.051 272.29 417.49 274.339 412.846C272.837 405.471 271.129 398.232 269.216 391.13C276.321 386.213 283.152 382.526 289.71 380.067C296.404 377.472 303.577 376.175 311.228 376.175C319.015 376.175 324.412 377.882 327.418 381.296C335.205 377.882 341.626 376.175 346.681 376.175C351.736 376.175 355.494 376.994 357.953 378.633C360.412 380.272 362.188 382.662 363.281 385.803C365.194 391.267 366.15 398.096 366.15 406.29ZM324.958 411.002H318.4C306.104 434.767 296.951 453.479 290.939 467.137H322.704C322.704 452.25 323.455 433.538 324.958 411.002Z" fill="white"/>
+      <path d="M379.774 411.617C379.774 400.554 382.643 392.223 388.381 386.623C394.119 381.023 400.95 378.223 408.874 378.223C416.935 378.223 427.865 379.589 441.664 382.321C455.463 385.052 465.846 386.486 472.814 386.623C484.427 384.438 495.493 381.774 506.013 378.633C507.106 382.184 507.653 386.623 507.653 391.95C507.653 403.013 504.442 411.344 498.021 416.944C491.736 422.543 483.675 425.343 473.839 425.343C471.379 425.343 468.1 425.207 464.002 424.934C456.487 464.405 452.73 486.463 452.73 491.106C452.73 504.355 454.78 514.257 458.878 520.813C450.681 526.959 442.142 530.032 433.261 530.032C424.381 530.032 418.028 527.505 414.203 522.452C410.377 517.261 408.464 509.613 408.464 499.506C408.464 489.263 412.426 462.083 420.351 417.968C404.912 420.017 391.933 422.339 381.413 424.934C380.32 421.519 379.774 417.08 379.774 411.617Z" fill="white"/>
+      <path d="M505.137 461.81C505.137 452.25 507.187 442.552 511.285 432.719C515.384 422.748 521.191 413.529 528.705 405.061C536.219 396.593 545.988 389.696 558.011 384.369C570.17 378.906 582.671 376.175 595.514 376.175C608.493 376.175 618.603 378.565 625.844 383.345C633.222 388.125 636.91 394.749 636.91 403.217C636.91 411.685 634.11 418.309 628.508 423.09C623.043 427.733 616.758 430.055 609.654 430.055C602.55 430.055 596.128 428.553 590.39 425.548C584.789 422.407 580.28 417.968 576.865 412.232C569.487 415.783 563.134 422.748 557.806 433.128C552.477 443.508 549.813 453.957 549.813 464.473C549.813 474.853 551.521 483.117 554.937 489.263C558.352 495.272 563.202 498.277 569.487 498.277C575.772 498.277 581.305 495.067 586.087 488.648C591.005 482.229 593.464 474.512 593.464 465.498C607.263 465.498 617.1 466.59 622.975 468.776C628.986 470.961 631.992 475.673 631.992 482.912C631.992 494.248 625.844 504.901 613.548 514.871C601.252 524.842 585.813 529.827 567.233 529.827C548.652 529.827 533.623 524.09 522.147 512.618C510.807 501.145 505.137 484.209 505.137 461.81Z" fill="white"/>
+      <path d="M741.554 498.277C741.554 492.541 742.51 483.117 744.423 470.005H698.107C696.331 480.248 695.443 487.282 695.443 491.106C695.443 504.355 697.493 514.257 701.591 520.813C693.394 526.959 684.855 530.032 675.974 530.032C667.094 530.032 660.741 527.505 656.916 522.452C653.09 517.261 651.177 509.613 651.177 499.506C651.177 489.263 655.481 460.376 664.088 412.846L653.227 390.925C668.665 380.955 682.737 375.97 695.443 375.97C705.963 375.97 711.223 382.389 711.223 395.227C711.223 399.052 708.354 415.851 702.616 445.625H748.521C749.068 442.211 751.049 431.285 754.464 412.846L743.603 390.925C759.041 380.955 773.113 375.97 785.819 375.97C796.339 375.97 801.599 382.389 801.599 395.227C801.599 399.461 798.935 415.236 793.607 442.552C788.415 469.732 785.819 485.916 785.819 491.106C785.819 504.355 787.869 514.257 791.967 520.813C783.77 526.959 775.231 530.032 766.351 530.032C757.47 530.032 751.117 527.505 747.292 522.452C743.466 517.261 741.554 509.203 741.554 498.277Z" fill="white"/>
+      <path d="M832.794 487.829C832.658 485.097 832.384 479.361 831.974 470.619C831.565 461.878 831.155 455.254 830.745 450.747C830.472 446.103 829.72 439.821 828.491 431.899C827.398 423.978 825.963 417.627 824.187 412.846C819.815 400.281 813.667 391.267 805.743 385.803C816.399 379.384 825.007 376.175 831.565 376.175C838.259 376.175 843.792 377.267 848.164 379.453C852.536 381.638 856.089 384.301 858.821 387.442C861.69 390.447 864.218 394.681 866.404 400.144C868.589 405.608 870.229 410.593 871.322 415.1C872.415 419.607 873.303 425.412 873.986 432.514C874.806 439.616 875.284 445.352 875.421 449.723C875.694 454.093 875.899 459.898 876.035 467.137C876.309 474.239 876.514 479.156 876.65 481.887H879.519C884.848 469.185 889.698 454.64 894.07 438.25C898.578 421.861 900.833 408.817 900.833 399.12C900.833 394.34 899.808 389.901 897.758 385.803C908.005 379.384 917.091 376.175 925.015 376.175C940.043 376.175 947.558 384.096 947.558 399.939C947.558 407.998 944.484 421.519 938.336 440.504C932.188 459.488 924.947 477.858 916.612 495.614C905.819 518.696 894.685 535.358 883.208 545.602C871.868 555.845 857.25 560.967 839.352 560.967C831.428 560.967 824.255 559.396 817.834 556.255C810.047 552.567 806.153 546.353 806.153 537.612C806.153 528.871 809.5 519.856 816.195 510.569C819.2 514.94 823.231 518.354 828.286 520.813C833.341 523.134 838.874 524.295 844.885 524.295C851.033 524.295 856.772 522.656 862.1 519.378C867.565 515.964 871.459 511.115 873.781 504.833C866.54 506.608 859.914 507.496 853.903 507.496C840.923 507.496 833.887 500.94 832.794 487.829Z" fill="white"/>
+    </svg>
+
+    <div class="hero-badge">הצעת שיתוף פעולה</div>
+    <h1>איילת וינטרוב <span style="color:rgba(255,255,255,0.3); font-weight:300;">|</span> שיבא</h1>
+    <p class="hero-sub">Ayelet Wintrob | Social Media Specialist | Catchy Digital Studio</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">תחומי שירות</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">ימים בשבוע</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">חודש פיילוט</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="container">
+  <div class="intro-section fade-in">
+    <p>
+      היי אתי,<br><br>
+      עברתי על הרשימה. זה חיבור שמעניין אותי מאוד:
+      <strong>תוכן רפואי, דיגיטל, וידאו, עיצוב וכלי AI.</strong><br>
+      חילקתי את המשימות לפי רמת ההתאמה שלי לכל אחת מהן.
+    </p>
+  </div>
+</div>
+
+<!-- TABS SECTION -->
+<div class="container">
+  <div class="tabs-wrapper fade-in">
+    <div class="section-header">
+      <span class="tag">היקף השירות</span>
+      <h2>מה אני מביאה לשולחן</h2>
+    </div>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('all', this)">הכל</button>
+      <button class="tab-btn" onclick="switchTab('immediate', this)">ביצוע מיידי</button>
+      <button class="tab-btn" onclick="switchTab('fast', this)">כניסה מהירה</button>
+      <button class="tab-btn" onclick="switchTab('pilot', this)">פרויקט לאפיון</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-all">
+      <div class="cards-grid">
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="mic"></i></span>
+          <span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>פודקאסטים מכתבות שיבא</h3>
+          <p>הפיכת תוכן מקצועי לנרטיב, פורמט ונגישות באמצעות NotebookLM.</p>
+          <div class="card-detail">NotebookLM הוא כלי שאני עובדת איתו. כתבות מאתר שיבא יהפכו לפודקאסטים עם נרטיב ברור ופורמט נגיש לקהל רחב.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="video"></i></span>
+          <span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>צילום כנסים ועריכה</h3>
+          <p>מהשטח לתוכן דיגיטלי: צילום, עריכת וידאו קצר, חילוץ מסרים.</p>
+          <div class="card-detail">צילום מהשטח, עריכת וידאו קצר, חילוץ מסרים והפיכת חומר חי לתוכן דיגיטלי שמדבר לקהל הרלוונטי.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="stethoscope"></i></span>
+          <span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>צילום רופאים</h3>
+          <p>עבודה עם מומחים שאינם רגילים למצלמה: תסריט, צילום, עריכה.</p>
+          <div class="card-detail">תסריט קצר, דיוק מסרים, צילום ועריכה לתוצר נגיש. אני מרגישה בבית בעבודה מול אנשי מקצוע ברמה גבוהה.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="bar-chart-2"></i></span>
+          <span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>אינפוגרפיקות לכתבות</h3>
+          <p>מידע רפואי מורכב הופך לברור, ויזואלי וקל להבנה.</p>
+          <div class="card-detail">שילוב תוכן ועיצוב הוא הליבה של העבודה שלי. אינפוגרפיקות שיהפכו כל כתבת עומק לנגישה ושיתופית.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="trending-up"></i></span>
+          <span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>ניתוח טרנדים עם AI</h3>
+          <p>איתור מגמות, בדיקת רלוונטיות לשיבא, תוכן תגובתי בזמן אמת.</p>
+          <div class="card-detail">תהליך עבודה קבוע: איתור מגמות ברשתות, בדיקת רלוונטיות לשיבא, וגזירת רעיונות לתוכן שמגיב לשיח.</div>
+        </div>
+        <div class="card blue-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="globe"></i></span>
+          <span class="card-badge badge-blue">כניסה מהירה</span>
+          <h3>תרגום סרטונים עם HeyGen</h3>
+          <p>דיבוב וליפ-סינק לשפות שונות, עם תהליך אישורים מסודר.</p>
+          <div class="card-detail">בתוכן רפואי: דיוק רפואי, אישור הדובר ושמירה על זכויות שימוש. אני מכירה את הכלי ויודעת לנהל את התהליך.</div>
+        </div>
+        <div class="card purple-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="bot"></i></span>
+          <span class="card-badge badge-purple">פרויקט לאפיון</span>
+          <h3>סוכן AI לניוזלטרים</h3>
+          <p>אפיון, לוגיקת תוכן, קהלי יעד ומסרים. היקף הטכני ייקבע בפיילוט.</p>
+          <div class="card-detail">אני יכולה להוביל את האפיון, לוגיקת התוכן, קהלי היעד והמסרים. היקף הביצוע הטכני ייקבע יחד בשלב הפיילוט.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-immediate">
+      <div class="cards-grid">
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="mic"></i></span><span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>פודקאסטים מכתבות שיבא</h3>
+          <p>הפיכת תוכן מקצועי לנרטיב, פורמט ונגישות באמצעות NotebookLM.</p>
+          <div class="card-detail">NotebookLM הוא כלי שאני עובדת איתו. כתבות מאתר שיבא יהפכו לפודקאסטים עם נרטיב ברור ופורמט נגיש.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="video"></i></span><span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>צילום כנסים ועריכה</h3>
+          <p>מהשטח לתוכן דיגיטלי: צילום, עריכת וידאו קצר, חילוץ מסרים.</p>
+          <div class="card-detail">צילום מהשטח, עריכת וידאו קצר, חילוץ מסרים והפיכת חומר חי לתוכן דיגיטלי.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="stethoscope"></i></span><span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>צילום רופאים</h3>
+          <p>תסריט קצר, דיוק מסרים, צילום ועריכה לתוצר נגיש.</p>
+          <div class="card-detail">עבודה מול אנשי מקצוע שאינם רגילים למצלמה, עם תוצר מדויק ברמה הרפואית והויזואלית.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="bar-chart-2"></i></span><span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>אינפוגרפיקות לכתבות</h3>
+          <p>מידע רפואי מורכב הופך לברור, ויזואלי וקל להבנה.</p>
+          <div class="card-detail">שילוב תוכן ועיצוב — הליבה של העבודה שלי.</div>
+        </div>
+        <div class="card green-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="trending-up"></i></span><span class="card-badge badge-green">ביצוע מיידי</span>
+          <h3>ניתוח טרנדים עם AI</h3>
+          <p>תהליך עבודה קבוע: איתור מגמות, רלוונטיות לשיבא, תוכן תגובתי.</p>
+          <div class="card-detail">בזמן אמת, עם כלי AI שמייצרים תוכן שמגיב לשיח הרפואי המתקדם.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-fast">
+      <div class="cards-grid">
+        <div class="card blue-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="globe"></i></span><span class="card-badge badge-blue">כניסה מהירה</span>
+          <h3>תרגום סרטונים עם HeyGen</h3>
+          <p>דיבוב וליפ-סינק לשפות שונות, עם תהליך אישורים מסודר.</p>
+          <div class="card-detail">בתוכן רפואי: דיוק רפואי, אישור הדובר ושמירה על זכויות שימוש.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-pilot">
+      <div class="cards-grid">
+        <div class="card purple-card" onclick="toggleCard(this)">
+          <span class="card-icon"><i data-lucide="bot"></i></span><span class="card-badge badge-purple">פרויקט לאפיון</span>
+          <h3>סוכן AI לניוזלטרים</h3>
+          <p>אפיון, לוגיקת תוכן, קהלי יעד ומסרים. היקף הטכני ייקבע בפיילוט.</p>
+          <div class="card-detail">מעבר לתוכן: אפיון מערכת, אוטומציה, דאטה ואבטחת מידע.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="container">
+  <div class="pricing-section fade-in">
+    <span style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--yellow); font-weight:600;">הצעת מחיר</span>
+    <div class="price-tag">8,500 ₪</div>
+    <p class="price-sub">ריטיינר חודשי | יומיים בשבוע</p>
+    <p class="price-note">עוסקת פטורה, ללא מע"מ</p>
+    <div class="price-includes">
+      <div class="price-item">
+        <div class="price-item-icon"><i data-lucide="calendar"></i></div>
+        <div class="price-item-text">יומיים בשבוע<br>מוגדרים מראש</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-icon"><i data-lucide="target"></i></div>
+        <div class="price-item-text">סדרי עדיפויות<br>מדויקים יחד</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-icon"><i data-lucide="settings-2"></i></div>
+        <div class="price-item-text">כלים רלוונטיים<br>ותהליכי אישורים</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILOT -->
+<div class="container">
+  <div class="pilot-banner fade-in">
+    <h3>חודש פיילוט ראשון</h3>
+    <p>
+      אני מציעה להתחיל בחודש ראשון כפיילוט עם תכולת עבודה מוגדרת,
+      כדי שנוכל לדייק יחד את סדרי העדיפויות, תהליכי האישורים, הכלים והיקף העבודה בפועל.
+    </p>
+    <a href="mailto:ayeletwintrob@gmail.com" class="btn-primary">נקבע שיחה קצרה</a>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<div class="container fade-in" style="padding-bottom: 60px;">
+  <div class="section-header" style="margin-top: 20px;">
+    <span class="tag">מעבר לכתיבת טקסטים</span>
+    <h2>דוגמאות לעבודה עם AI</h2>
+  </div>
+  <div class="cards-grid">
+    <div class="card green-card">
+      <span class="card-icon"><i data-lucide="globe"></i></span>
+      <h3>בניית אתר אישי מקצועי</h3>
+      <p>אפיון, מבנה, מסרים, UX ושפה ויזואלית</p>
+    </div>
+    <div class="card blue-card">
+      <span class="card-icon"><i data-lucide="wand-2"></i></span>
+      <h3>קונספטים ויזואליים לקמפיינים</h3>
+      <p>פרומפטים ודימויים מותאמים למותג בעזרת כלי AI</p>
+    </div>
+    <div class="card purple-card">
+      <span class="card-icon"><i data-lucide="graduation-cap"></i></span>
+      <h3>מצגות והדרכות AI</h3>
+      <p>תהליכי למידה סביב כלי AI לצוותים</p>
+    </div>
+    <div class="card green-card">
+      <span class="card-icon"><i data-lucide="microscope"></i></span>
+      <h3>מחקר ופיתוח תסריטים</h3>
+      <p>זיהוי זוויות תוכן, פיתוח תסריטים, רעיונות לווידאו</p>
+    </div>
+    <div class="card blue-card">
+      <span class="card-icon"><i data-lucide="layout-template"></i></span>
+      <h3>קרוסלות ואינפוגרפיקות</h3>
+      <p>הפיכת מידע מורכב לתוצרים נגישים ושיתופיים</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>Ayelet Wintrob</strong> | Social Media Specialist | Catchy Digital Studio<br>
+  <span style="font-size:11px; margin-top:6px; display:block;">מסמך זה נבנה בקוד | 2025</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('scrollBar');
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = pct + '%';
+  });
+
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.15 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  lucide.createIcons();
+
+  function toggleCard(card) {
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  }
+</script>
+</body>
+</html>
